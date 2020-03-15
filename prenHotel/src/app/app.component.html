@@ -1,0 +1,34 @@
+<div>
+  <h1>
+    {{ title }}
+  </h1>
+  <h2>Seleziona camera:</h2>
+  <select [(ngModel)]="selectedOption"  (change)="onChange()">
+    <option [value]="booking.name" *ngFor="let booking of bookings"> Stanza: {{booking.name}}</option>
+  </select> <br>
+
+
+
+  {{selectedOption}}
+
+  <hr>
+
+  <div *ngIf="selectedOption">
+    <app-dettagli-stanza [booking]="selectedRoom"></app-dettagli-stanza>
+    <form>
+      <input type="date" #f> : da <br>
+      <input type="date" #t> : a <br>
+      <input #n> : nome <br>
+      <input #s> : cognome <br>
+      <button (click)="onClick(f,t,n,s)"> aggiungi prenotazione </button>
+       <hr>
+    </form>
+
+  </div>
+
+
+
+  <app-lista-pren [roomList] = "roomList" class="card"> </app-lista-pren>
+
+
+</div>
